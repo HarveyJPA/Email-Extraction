@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EmailExtract/EECore.iml" filepath="$PROJECT_DIR$/EmailExtract/EECore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Email-Extraction.iml" filepath="$PROJECT_DIR$/.idea/Email-Extraction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EmailExtract/EmailExtract.iml" filepath="$PROJECT_DIR$/EmailExtract/EmailExtract.iml" />
+    </modules>
+  </component>
+</project>
