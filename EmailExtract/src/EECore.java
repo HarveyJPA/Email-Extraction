@@ -4,17 +4,18 @@ import java.io.IOException;
 import java.util.regex.*;
 
 public class EECore {
+
     public static void main(String[] args) {
         System.out.println(filePrinterAndCounterMatcher());
     }
 
     private static int filePrinterAndCounterMatcher() {
         int count = 0;
+        Pattern emailAddressPattern = Pattern.compile("(([a-z0-9_.]+)@softwire.com)", Pattern.CASE_INSENSITIVE);
         try {
             FileReader reader = new FileReader("/Users/hparkera/ghstuff/email-extraction/sample.txt");
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line;
-            Pattern emailAddressPattern = Pattern.compile("(([a-z0-9_.]+)@softwire.com) ");
             while ((line = bufferedReader.readLine()) != null) {
                 Matcher countEmailMatcher = emailAddressPattern.matcher(line);
                 while (countEmailMatcher.find()) {
