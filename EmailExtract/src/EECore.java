@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.*;
+import java.util.HashMap;
 
 public class EECore {
 
@@ -9,9 +10,10 @@ public class EECore {
         System.out.println(filePrinterAndCounterMatcher());
     }
 
-    private static int filePrinterAndCounterMatcher() {
-        int count = 0;
-        Pattern emailAddressPattern = Pattern.compile("(([a-z0-9_.]+)@softwire.com)", Pattern.CASE_INSENSITIVE);
+    private static HashMap<String, Integer> filePrinterAndCounterMatcher() {
+        HashMap<String, Integer> emails = new HashMap<>();
+        //int count = 0;
+        Pattern emailAddressPattern = Pattern.compile("[a-z-._]+@([a-z0-9_.-]+[a-z])", Pattern.CASE_INSENSITIVE);
         try {
             FileReader reader = new FileReader("/Users/hparkera/ghstuff/email-extraction/sample.txt");
             BufferedReader bufferedReader = new BufferedReader(reader);
@@ -19,15 +21,16 @@ public class EECore {
             while ((line = bufferedReader.readLine()) != null) {
                 Matcher countEmailMatcher = emailAddressPattern.matcher(line);
                 while (countEmailMatcher.find()) {
-                    System.out.println(countEmailMatcher.group());
-                    count++;
+                    String temp = countEmailMatcher.group(1);
+                    emails.putIfAbsent(temp, 0);
+                    emails.put(countEmailMatcher.group(1), (emails.get(temp)) + 1);
                 }
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return count;
+        return emails;
     }
 }
 
