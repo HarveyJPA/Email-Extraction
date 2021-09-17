@@ -12,7 +12,6 @@ public class EECore {
 
     private static HashMap<String, Integer> filePrinterAndCounterMatcher() {
         HashMap<String, Integer> emails = new HashMap<>();
-        //int count = 0;
         Pattern emailAddressPattern = Pattern.compile("[a-z-._]+@([a-z0-9_.-]+[a-z])", Pattern.CASE_INSENSITIVE);
         try {
             FileReader reader = new FileReader("/Users/hparkera/ghstuff/email-extraction/sample.txt");
