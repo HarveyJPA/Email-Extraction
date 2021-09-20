@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.*;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EECore {
 
@@ -10,8 +11,8 @@ public class EECore {
         System.out.println(filePrinterAndCounterMatcher());
     }
 
-    private static HashMap<String, Integer> filePrinterAndCounterMatcher() {
-        HashMap<String, Integer> emails = new HashMap<>();
+    private static Map<String, Integer> filePrinterAndCounterMatcher() {
+        Map<String, Integer> emails = new HashMap<>();
         Pattern emailAddressPattern = Pattern.compile("(?<name>[a-z-._])+@(?<domain>[a-z0-9_.-]+[a-z])", Pattern.CASE_INSENSITIVE);
         try {
             FileReader reader = new FileReader("/Users/hparkera/ghstuff/email-extraction/sample.txt");
