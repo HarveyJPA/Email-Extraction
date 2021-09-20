@@ -20,9 +20,9 @@ public class EECore {
             while ((line = bufferedReader.readLine()) != null) {
                 Matcher countEmailMatcher = emailAddressPattern.matcher(line);
                 while (countEmailMatcher.find()) {
-                    String temp = countEmailMatcher.group("domain");
-                    emails.putIfAbsent(temp, 0);
-                    emails.put(countEmailMatcher.group("domain"), (emails.get(temp)) + 1);
+                    String domainName = countEmailMatcher.group("domain");
+                    emails.putIfAbsent(domainName, 0);
+                    emails.put(countEmailMatcher.group("domain"), (emails.get(domainName)) + 1);
                 }
             }
             reader.close();
