@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.regex.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +10,7 @@ import java.util.Map;
 public class EECore {
 
     public static void main(String[] args) {
-        System.out.println(filePrinterAndCounterMatcher());
+        sortEmails(filePrinterAndCounterMatcher());
     }
 
     private static Map<String, Integer> filePrinterAndCounterMatcher() {
@@ -31,6 +33,21 @@ public class EECore {
             e.printStackTrace();
         }
         return emails;
+    }
+
+    private static void sortEmails(Map<String, Integer> emails) {
+        Map<String, Integer> sortedEmails = new LinkedHashMap<>();
+        emails.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedEmails.put(x.getKey(), x.getValue()));
+        int count = 0;
+        for (String key : sortedEmails.keySet()) {
+            count++;
+            if (count <= 10) {
+                System.out.println("# " + count + " " + key + " appears " + sortedEmails.get(key) + " times ");
+            }
+        }
     }
 }
 
